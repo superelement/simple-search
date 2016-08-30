@@ -1,0 +1,15 @@
+{
+  "name": "simple-search",
+  "globalDependencies": {
+    "fs-extra": "github:DefinitelyTyped/DefinitelyTyped/fs-extra/fs-extra.d.ts",
+    "node": "github:DefinitelyTyped/DefinitelyTyped/node/node.d.ts",
+    "jasmine": "github:DefinitelyTyped/DefinitelyTyped/jasmine/jasmine.d.ts",
+    "es6-promise": "github:DefinitelyTyped/DefinitelyTyped/es6-promise/es6-promise.d.ts",
+    "es6-collections": "github:DefinitelyTyped/DefinitelyTyped/es6-collections/es6-collections.d.ts",
+    "replace-ext": "github:DefinitelyTyped/DefinitelyTyped/replace-ext/replace-ext.d.ts"
+  },
+  "dependencies": {
+    "globby": "github:types/npm-globby/index.d.ts",
+    "pinkie-promise": "github:typed-typings/npm-pinkie-promise/index.d.ts"
+  }
+}

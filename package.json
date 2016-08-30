@@ -1,0 +1,36 @@
+{
+  "name": "simple-search",
+  "version": "1.0.0",
+  "description": "A search input with elegant UI, event handlers and focus handling",
+  "main": "index.js",
+  "scripts": {
+    "typings": "typings install --save-dev --global",
+    "test": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/superelement/simple-search.git"
+  },
+  "keywords": [
+    "search",
+    "input"
+  ],
+  "author": "Jim Doyle",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/superelement/simple-search/issues"
+  },
+  "homepage": "https://github.com/superelement/simple-search#readme",
+  "devDependencies": {
+    "es6-promise": "^3.2.1",
+    "gulp": "^3.9.1",
+    "gulp-flatten": "^0.3.1",
+    "gulp-iconfont": "^8.0.1",
+    "gulp-iconfont-css": "^2.1.0",
+    "gulp-jasmine": "^2.4.0",
+    "gulp-typescript": "^2.13.6",
+    "gulp-watch": "^4.3.9",
+    "run-sequence": "^1.2.2",
+    "typings": "^1.3.3"
+  }
+}
