@@ -1,9 +1,19 @@
-// This is intended to run and example of the main "startQuestions" function from node
+// this is intended to run in a browser with 'index.js' loaded before it
 
-var ss = require("../dist/index.js");
+var clearCB = function() {
+	console.log("clearCB");
+}
+var closeCB = function() {
+	console.log("closeCB");
+}
+var submitCB = function() {
+	console.log("submitCB");
+}
 
-ss.init({
-	// options
-}, function() {
-	// callback 1
+window.simpleSearch.init({
+	el: document.querySelector(".smpSch")
+    , clearCB:clearCB
+    , closeCB:closeCB
+    , submitCB:submitCB
+    , clearOnFocusOut:true
 })

@@ -1,13 +1,32 @@
-<div class="smpSch" data-name="simpleSearch">
-    <form class="smpSch-form" action="FORM_ACTION_URL" method="get" >
-        <button type="button" class="smpSch-btnclose">
-            <span class="icon-close"></span>
-        </button>
-        <div class="smpSch-formgroup">
-            <input type="text" class="smpSch-input" placeholder="Search something" name="INPUT_NAME" value="A PREDEFINED VALUE">
+<html>
+    <head>
+
+        <title>Simple Search Demo</title>
+
+        <link href="/dist/icomoon.css" type="text/css" rel="stylesheet"> <!-- just for 'cross' icon, replace with you're own font icon set -->
+        <link href="/dist/simple-search.css" type="text/css" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <div class="l-outerContainer"> <!-- not part of simpleSearch component -->
+
+            <div class="smpSch" data-name="simpleSearch">
+                <form class="smpSch-form" action="FORM_ACTION_URL" method="get" >
+                    <button type="button" class="smpSch-btnclose">
+                        <span class="icon-close"></span>
+                    </button>
+                    <div class="smpSch-formgroup">
+                        <input type="text" class="smpSch-input" placeholder="Search something" name="INPUT_NAME" value="A PREDEFINED VALUE">
+                    </div>
+                    <button type="submit" class="smpSch-btnsubmit">
+                        <span class="icon-search"></span>
+                    </button>
+                </form>
+            </div>
         </div>
-        <button type="submit" class="smpSch-btnsubmit">
-            <span class="icon-search"></span>
-        </button>
-    </form>
-</div>
+
+        <script src="/dist/index.js"></script>
+        <script src="example.js"></script>
+    </body>
+</html>

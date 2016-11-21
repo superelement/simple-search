@@ -2,8 +2,7 @@
     "files": [
     	"typings/index.d.ts",
     	"typings/custom.d.ts",
-        "src/index.ts",
-        "src/specs.ts"
+        "src/index.ts"
     ],
     "compilerOptions": {
         "noImplicitAny": true,

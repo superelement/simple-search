@@ -1,0 +1,188 @@
+html {
+    font-size: 10px; // just because rems are used as font-size
+}
+
+.l-outerContainer {
+    height: 50px;
+}
+
+$xlt-gry: #f0f0f0;
+$lt-gry: #e4e4e4;
+$xdk-gry: #231f20;
+
+
+@mixin break-sm {
+    @media only screen and (max-width: 767px) {
+        @content;
+    }
+}
+
+@mixin break-md {
+    @media only screen and (max-width: 991px) {
+      @content;
+    }
+}
+
+
+// similar to Bootstrap 'placeholder' mixin but with ability to add any styles
+@mixin placeholder-styling {
+
+  &::-webkit-input-placeholder {
+    @content;
+  }
+
+  &:-moz-placeholder {
+    @content;
+  }
+
+  &::-moz-placeholder {
+    @content;
+  }
+
+  &:-ms-input-placeholder {
+    @content;
+  }
+
+  // MS Edge will use webkit vendor prefix (however there is a bug is version or Edge at time of writing that hides the placeholder text completely)
+}
+
+
+
+.btnnormalize {
+    border: none;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+
+    // should have this for <button> element
+    height: auto !important;
+    display: inline-block !important;
+
+    // gets rid of BS3 default styles
+    &:focus, &:active:focus, &.active:focus {
+        outline: none;
+        outline-offset: 0;
+    }
+}
+
+.smpSch {
+    position: relative;
+
+    
+    &:before {
+        content: '';
+        border-top: 1px solid $lt-gry;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+    }
+  
+    &-formgroup {
+        margin: 0;
+        height: 100%;
+    }
+
+    &-input {
+        font-style: italic;
+        height: 100%;
+        min-height: 7rem;
+        font-size: 2rem;
+        box-shadow: 1px 4px 10px $xlt-gry inset;
+        transition: padding-left 0.15s ease-in-out;
+        padding-right: 58px;
+        background-color: white;
+        border-color: $lt-gry;
+    }
+
+    &-form {
+        position: relative;
+        margin: 0 auto;
+        display: block;
+    }
+    
+    &-btnsubmit {
+        @extend .btnnormalize;
+        font-size: 3rem;
+        position: absolute;
+        top: 50%;
+        margin-top: -1.6rem;
+        width: 3.1rem;
+        right: 1.8rem;
+        color: $xdk-gry;
+    }
+
+    &-btnclose {
+        @extend .btnnormalize;
+        position: absolute;
+        top: 50%;
+        left: 1.1rem;
+        padding: 1.5rem;
+        margin-top: -2rem;
+        font-size: 1.2rem;
+        color: $xdk-gry;
+    }
+
+
+    /** States below here **/
+
+
+    &:before {
+        @include break-sm {
+            display: none;
+        }
+    }
+
+    &.no-keyline {
+        &:before { // simulates .no-keyline
+            display: none;
+        }
+    }
+
+
+    &-form {
+        width: 50%;
+
+        @include break-md {
+            width: 70%;
+        }
+
+        @include break-sm {
+            width: 100%;
+        }
+    }
+
+    &-input {
+        color: $xdk-gry;
+
+
+        &.placeholder {
+            color: lighten($xdk-gry, 60%);
+        }
+
+        .is-focussed & {
+            padding-left: 5.2rem;
+        }
+
+        &::-ms-clear {
+            display: none;
+        }
+
+    }
+
+    &-btnclose {
+        display: none;
+        opacity: 0;
+        transition: opacity 0.15s linear;
+    
+        .is-focussed & {
+            display: block;
+            opacity: 1;
+            transition-delay: 0.1s;
+        }
+
+        .is-transitioning & {
+            display: block !important;
+        }
+    }
+}
