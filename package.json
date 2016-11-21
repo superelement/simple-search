@@ -1,5 +1,5 @@
 {
-  "name": "simple-search",
+  "name": "simple-search-bar",
   "version": "1.0.0",
   "description": "A search input with elegant UI, event handlers and focus handling",
   "main": "index.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/superelement/simple-search.git"
+    "url": "git+https://github.com/superelement/simple-search-bar.git"
   },
   "keywords": [
     "search",
@@ -18,9 +18,9 @@
   "author": "Jim Doyle",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/superelement/simple-search/issues"
+    "url": "https://github.com/superelement/simple-search-bar/issues"
   },
-  "homepage": "https://github.com/superelement/simple-search#readme",
+  "homepage": "https://github.com/superelement/simple-search-bar#readme",
   "devDependencies": {
     "es6-promise": "^3.2.1",
     "gulp": "^3.9.1",

@@ -1,5 +1,5 @@
 {
-  "name": "simple-search",
+  "name": "simple-search-bar",
   "globalDependencies": {
     "fs-extra": "github:DefinitelyTyped/DefinitelyTyped/fs-extra/fs-extra.d.ts",
     "node": "github:DefinitelyTyped/DefinitelyTyped/node/node.d.ts",

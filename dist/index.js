@@ -1,27 +1,27 @@
 // import {Promise} from "es6-promise";
 // import {polyfill} from "es6-promise";
 "use strict";
-var NS = "SimpleSearch";
+var NS = "SimpleSearchBar";
 var PRF = ".smpSch-";
 var IS_FOC = "is-focussed";
-var simpleSearch = {};
+var simpleSearchBar = {};
 var isBrowser = typeof window !== "undefined";
 if (isBrowser) {
     var win = window;
-    simpleSearch = win[NS] = {};
+    simpleSearchBar = win[NS] = {};
 }
 var suppressWarnings = false;
 var instances = [];
-var SimpleSearch = (function () {
-    function SimpleSearch(opts) {
+var SimpleSearchBar = (function () {
+    function SimpleSearchBar(opts) {
         this.opts = opts;
         this.externalClear = false;
     }
-    return SimpleSearch;
+    return SimpleSearchBar;
 }());
 function init(opts) {
     // TODO: add check for drift state
-    var inst = new SimpleSearch(opts);
+    var inst = new SimpleSearchBar(opts);
     instances.push(inst);
     var $el = opts.el, $inp = getInp($el), $btnCls = $el.querySelector(PRF + "btnclose"), justCleared = false, ignoreBlur = false, $form = $el.querySelector(PRF + "form");
     console.log(opts.el, $form, $el.querySelector(PRF + "form"));
@@ -151,7 +151,7 @@ function refreshUI($el) {
     // call this if ui was hidden on load, but is now visible
     //$el.find(PRF + "input").placeholder();
 }
-simpleSearch = {
+simpleSearchBar = {
     init: init,
     clear: clear,
     close: close,
@@ -166,4 +166,4 @@ simpleSearch = {
 };
 // make available in Common.js
 if (!isBrowser)
-    module.exports = simpleSearch;
+    module.exports = simpleSearchBar;

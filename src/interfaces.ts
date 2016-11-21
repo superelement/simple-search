@@ -1,4 +1,4 @@
-export interface ISimpleSearchOptions {
+export interface ISimpleSearchBarOptions {
       el: HTMLElement
     , clearCB:Function
     , closeCB:Function

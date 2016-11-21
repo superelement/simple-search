@@ -1,29 +1,29 @@
 // import {Promise} from "es6-promise";
 // import {polyfill} from "es6-promise";
 
-import {ISimpleSearchOptions} from "./interfaces";
+import {ISimpleSearchBarOptions} from "./interfaces";
 
-const NS = "SimpleSearch";
+const NS = "SimpleSearchBar";
 const PRF = ".smpSch-";
 const IS_FOC = "is-focussed";
 
-var simpleSearch = {};
+var simpleSearchBar = {};
 var isBrowser:boolean = typeof window !== "undefined";
 
 if(isBrowser) {
     let win:any = window;
-    simpleSearch = win[NS] = {};
+    simpleSearchBar = win[NS] = {};
 }
 
 var suppressWarnings = false;
 
-var instances:SimpleSearch[] = [];
+var instances:SimpleSearchBar[] = [];
 
-class SimpleSearch {
-    public opts:ISimpleSearchOptions;
+class SimpleSearchBar {
+    public opts:ISimpleSearchBarOptions;
     public externalClear:boolean;
 
-    constructor(opts:ISimpleSearchOptions) {
+    constructor(opts:ISimpleSearchBarOptions) {
         this.opts = opts;
         this.externalClear = false;
     }
@@ -31,11 +31,11 @@ class SimpleSearch {
 }
 
 
-function init(opts:ISimpleSearchOptions):void {
+function init(opts:ISimpleSearchBarOptions):void {
 
     // TODO: add check for drift state
 
-    var inst:SimpleSearch = new SimpleSearch(opts);
+    var inst:SimpleSearchBar = new SimpleSearchBar(opts);
     instances.push( inst );
     
     
@@ -132,8 +132,8 @@ function init(opts:ISimpleSearchOptions):void {
 
 
 // gets an instance by passing the root HTMLElement
-function getInst($el:HTMLElement):SimpleSearch {
-    var inst:SimpleSearch;
+function getInst($el:HTMLElement):SimpleSearchBar {
+    var inst:SimpleSearchBar;
     instances.some((_inst) => {
         inst = _inst;
         return _inst.opts.el === $el; // breaks loop
@@ -180,8 +180,8 @@ function getInputText($el:HTMLElement) {
 
 // clears and removes focus
 function close($el:HTMLElement) {
-    var inst:SimpleSearch = getInst($el);
-    var prp:ISimpleSearchOptions = inst.opts;
+    var inst:SimpleSearchBar = getInst($el);
+    var prp:ISimpleSearchBarOptions = inst.opts;
 
     inst.externalClear = true;
 
@@ -203,7 +203,7 @@ function refreshUI($el:HTMLElement) {
     //$el.find(PRF + "input").placeholder();
 }
 
-simpleSearch = {
+simpleSearchBar = {
     init: init
     , clear: clear
     , close: close
@@ -218,4 +218,4 @@ simpleSearch = {
 }
 
 // make available in Common.js
-if(!isBrowser) module.exports = simpleSearch; 
+if(!isBrowser) module.exports = simpleSearchBar; 

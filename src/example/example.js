@@ -10,7 +10,7 @@ var submitCB = function() {
 	console.log("submitCB");
 }
 
-window.simpleSearch.init({
+window.simpleSearchBar.init({
 	el: document.querySelector(".smpSch")
     , clearCB:clearCB
     , closeCB:closeCB

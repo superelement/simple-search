@@ -1,0 +1,91 @@
+html {
+  font-size: 10px; }
+
+.l-outerContainer {
+  height: 50px; }
+
+.btnnormalize, .smpSch-btnsubmit, .smpSch-btnclose {
+  border: none;
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  height: auto !important;
+  display: inline-block !important; }
+  .btnnormalize:focus, .smpSch-btnsubmit:focus, .smpSch-btnclose:focus, .btnnormalize:active:focus, .smpSch-btnsubmit:active:focus, .smpSch-btnclose:active:focus, .btnnormalize.active:focus, .active.smpSch-btnsubmit:focus, .active.smpSch-btnclose:focus {
+    outline: none;
+    outline-offset: 0; }
+
+.smpSch {
+  position: relative;
+  /** States below here **/ }
+  .smpSch:before {
+    content: '';
+    border-top: 1px solid #e4e4e4;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0; }
+  .smpSch-formgroup {
+    margin: 0;
+    height: 100%; }
+  .smpSch-input {
+    font-style: italic;
+    height: 100%;
+    min-height: 7rem;
+    font-size: 2rem;
+    box-shadow: 1px 4px 10px #f0f0f0 inset;
+    transition: padding-left 0.15s ease-in-out;
+    padding-right: 58px;
+    background-color: white;
+    border-color: #e4e4e4; }
+  .smpSch-form {
+    position: relative;
+    margin: 0 auto;
+    display: block; }
+  .smpSch-btnsubmit {
+    font-size: 3rem;
+    position: absolute;
+    top: 50%;
+    margin-top: -1.6rem;
+    width: 3.1rem;
+    right: 1.8rem;
+    color: #231f20; }
+  .smpSch-btnclose {
+    position: absolute;
+    top: 50%;
+    left: 1.1rem;
+    padding: 1.5rem;
+    margin-top: -2rem;
+    font-size: 1.2rem;
+    color: #231f20; }
+  @media only screen and (max-width: 767px) {
+    .smpSch:before {
+      display: none; } }
+  .smpSch.no-keyline:before {
+    display: none; }
+  .smpSch-form {
+    width: 50%; }
+    @media only screen and (max-width: 991px) {
+      .smpSch-form {
+        width: 70%; } }
+    @media only screen and (max-width: 767px) {
+      .smpSch-form {
+        width: 100%; } }
+  .smpSch-input {
+    color: #231f20; }
+    .smpSch-input.placeholder {
+      color: #beb6b8; }
+    .is-focussed .smpSch-input {
+      padding-left: 5.2rem; }
+    .smpSch-input::-ms-clear {
+      display: none; }
+  .smpSch-btnclose {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.15s linear; }
+    .is-focussed .smpSch-btnclose {
+      display: block;
+      opacity: 1;
+      transition-delay: 0.1s; }
+    .is-transitioning .smpSch-btnclose {
+      display: block !important; }
