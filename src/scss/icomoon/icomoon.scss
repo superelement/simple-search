@@ -26,7 +26,10 @@ $fontPath: "/src/scss/icomoon/fonts/";
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-close:before {
-  content: "\e90e";
-}
 
+.icon-search:before {
+  content: "\f002";
+}
+.icon-close:before {
+  content: "\f00d";
+}
