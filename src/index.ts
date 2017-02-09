@@ -37,17 +37,18 @@ function init(opts:ISimpleSearchBarOptions):void {
 
     var inst:SimpleSearchBar = new SimpleSearchBar(opts);
     instances.push( inst );
-    
-    
+
+
     var $el:HTMLElement = opts.el
-      , $inp:HTMLInputElement = getInp($el)
-      , $btnCls:HTMLButtonElement = <HTMLButtonElement>$el.querySelector(PRF + "btnclose")
-      , justCleared:boolean = false
-      , ignoreBlur:boolean = false
-      , $form:HTMLFormElement = <HTMLFormElement>$el.querySelector(PRF+"form");
-    
+        , $inp:HTMLInputElement = getInp($el)
+        , $btnCls:HTMLButtonElement = <HTMLButtonElement>$el.querySelector(PRF + "btnclose")
+        , $btnSubmit:HTMLButtonElement = <HTMLButtonElement>$el.querySelector(PRF + "btnsubmit")
+        , justCleared:boolean = false
+        , ignoreBlur:boolean = false
+        , $form:HTMLFormElement = <HTMLFormElement>$el.querySelector(PRF+"form");
+
     console.log(opts.el, $form, $el.querySelector(PRF+"form"))
-    
+
     var close = function ():void {
         if (opts.clearOnFocusOut) $inp.value = "";
 
@@ -63,8 +64,9 @@ function init(opts:ISimpleSearchBarOptions):void {
             }
         }, 110);
     }
-    
+
     // stops focus from anywhere in this widget from triggering close
+
     $form.addEventListener("mousedown", function (evt) {
         ignoreBlur = true;
         setTimeout(function () {
@@ -81,7 +83,8 @@ function init(opts:ISimpleSearchBarOptions):void {
         if (!ignoreBlur && !inst.externalClear) close();
     });
 
-    $btnCls.addEventListener("click", function (evt) {
+
+    $btnCls.addEventListener("click", function (evt:KeyboardEvent) {
 
         ///console.log("real close");
 
@@ -96,7 +99,6 @@ function init(opts:ISimpleSearchBarOptions):void {
             if (opts.clearCB) opts.clearCB();
         }
 
-        
         setTimeout(function () {
             justCleared = false;
         }, 101);
@@ -106,7 +108,7 @@ function init(opts:ISimpleSearchBarOptions):void {
         // escape pressed on keyboard
         if (evt.keyCode === 27 && $inp.value !== "") $inp.value = "";
     }
-    
+
     var keyDownFun = (evt:KeyboardEvent) => {
         // escape pressed on keyboard
         if (evt.keyCode === 27 && $inp.value === "") focusOut($el, opts.closeCB, opts.clearCB);
@@ -118,9 +120,25 @@ function init(opts:ISimpleSearchBarOptions):void {
     // Firefox won't work unless this is on keydown and other browsers are ok with it, so using it for all
     $el.removeEventListener("keydown", keyDownFun);
     $el.addEventListener("keydown", keyDownFun);
-    
-    if (opts.submitCB) {
-        $form.addEventListener("submit", function(evt) {
+
+
+    // Add event listener to input element for submit instead of form submission.
+    $inp.addEventListener("keydown", function (evt) {
+        if (evt.keyCode === 13) {
+            evt.preventDefault();
+            if (opts.submitCB && $inp.value !== "") {
+                evt.preventDefault();
+                opts.submitCB($inp.value);
+                $el.classList.remove(IS_FOC); //TODO: add drift state
+                // console.log($inp.value);
+            }
+        }
+    });
+
+    // Add secondary event listener to submit button if it exists for submit instead of form submission.
+
+    if (opts.submitCB && $btnSubmit) {
+        $btnSubmit.addEventListener("click", function(evt) {
             evt.preventDefault();
             opts.submitCB($inp.value);
             $el.classList.remove(IS_FOC); //TODO: add drift state
@@ -189,7 +207,7 @@ function close($el:HTMLElement) {
         var $inp:HTMLInputElement = getInp($el)
         $inp.value = "";
     }
-    
+
     focusOut($el);
 
     setTimeout(function () {
