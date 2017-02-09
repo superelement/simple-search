@@ -23,8 +23,8 @@ function init(opts) {
     // TODO: add check for drift state
     var inst = new SimpleSearchBar(opts);
     instances.push(inst);
-    var $el = opts.el, $inp = getInp($el), $btnCls = $el.querySelector(PRF + "btnclose"), justCleared = false, ignoreBlur = false, $form = $el.querySelector(PRF + "form");
-    console.log(opts.el, $form, $el.querySelector(PRF + "form"));
+    var $el = opts.el, $inp = getInp($el), $btnCls = $el.querySelector(PRF + "btnclose"), $btnSubmit = $el.querySelector(PRF + "btnsubmit"), justCleared = false, ignoreBlur = false;
+    console.log(opts.el, $el.querySelector(PRF + "form"));
     var close = function () {
         if (opts.clearOnFocusOut)
             $inp.value = "";
@@ -41,7 +41,7 @@ function init(opts) {
         }, 110);
     };
     // stops focus from anywhere in this widget from triggering close
-    $form.addEventListener("mousedown", function (evt) {
+    $el.addEventListener("mousedown", function (evt) {
         ignoreBlur = true;
         setTimeout(function () {
             ignoreBlur = false;
@@ -86,8 +86,20 @@ function init(opts) {
     // Firefox won't work unless this is on keydown and other browsers are ok with it, so using it for all
     $el.removeEventListener("keydown", keyDownFun);
     $el.addEventListener("keydown", keyDownFun);
-    if (opts.submitCB) {
-        $form.addEventListener("submit", function (evt) {
+    // Add event listener to input element for submit instead of form submission.
+    $inp.addEventListener("keydown", function (evt) {
+        if (evt.keyCode === 13) {
+            evt.preventDefault();
+            if (opts.submitCB && $inp.value !== "") {
+                evt.preventDefault();
+                opts.submitCB($inp.value);
+                $el.classList.remove(IS_FOC); //TODO: add drift state
+            }
+        }
+    });
+    // Add secondary event listener to submit button if it exists for submit instead of form submission.
+    if (opts.submitCB && $btnSubmit) {
+        $btnSubmit.addEventListener("click", function (evt) {
             evt.preventDefault();
             opts.submitCB($inp.value);
             $el.classList.remove(IS_FOC); //TODO: add drift state
