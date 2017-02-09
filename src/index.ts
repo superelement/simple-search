@@ -45,9 +45,8 @@ function init(opts:ISimpleSearchBarOptions):void {
         , $btnSubmit:HTMLButtonElement = <HTMLButtonElement>$el.querySelector(PRF + "btnsubmit")
         , justCleared:boolean = false
         , ignoreBlur:boolean = false
-        , $form:HTMLFormElement = <HTMLFormElement>$el.querySelector(PRF+"form");
 
-    console.log(opts.el, $form, $el.querySelector(PRF+"form"))
+    console.log(opts.el, $el.querySelector(PRF+"form"))
 
     var close = function ():void {
         if (opts.clearOnFocusOut) $inp.value = "";
@@ -67,7 +66,7 @@ function init(opts:ISimpleSearchBarOptions):void {
 
     // stops focus from anywhere in this widget from triggering close
 
-    $form.addEventListener("mousedown", function (evt) {
+    $el.addEventListener("mousedown", function (evt) {
         ignoreBlur = true;
         setTimeout(function () {
             ignoreBlur = false;

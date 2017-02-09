@@ -10,10 +10,13 @@ var submitCB = function() {
 	console.log("submitCB");
 }
 
-window.simpleSearchBar.init({
-	el: document.querySelector(".smpSch")
-    , clearCB:clearCB
-    , closeCB:closeCB
-    , submitCB:submitCB
-    , clearOnFocusOut:true
-})
+document.querySelectorAll(".smpSch")
+.forEach(function($el) {
+    window.simpleSearchBar.init({
+        el: $el
+        , clearCB:clearCB
+        , closeCB:closeCB
+        , submitCB:submitCB
+        , clearOnFocusOut:true
+    })
+});
