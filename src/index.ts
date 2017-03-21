@@ -76,6 +76,7 @@ function init(opts:ISimpleSearchBarOptions):void {
 
     $inp.addEventListener("focus", function () {
         $el.classList.add(IS_FOC); //TODO: add drift state
+        if(opts.focusCB) opts.focusCB();
     });
 
     $inp.addEventListener("blur", function () {

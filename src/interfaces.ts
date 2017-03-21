@@ -4,4 +4,5 @@ export interface ISimpleSearchBarOptions {
     , closeCB:Function
     , submitCB:Function
     , clearOnFocusOut:Function
+    , focusCB:Function
 }
