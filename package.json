@@ -1,8 +1,8 @@
 {
   "name": "simple-search-bar",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A search input with elegant UI, event handlers and focus handling",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "typings": "typings install --save-dev --global",
     "test": "gulp"
